@@ -8,7 +8,6 @@ const HTTP_PORT: u16 = 80;
 #[derive(Debug)]
 enum ClientError {
     Io(io::Error),
-    AddrParse(net::AddrParseError),
     Usage,
     BadUrl
 }
@@ -16,12 +15,6 @@ enum ClientError {
 impl From<io::Error> for ClientError {
     fn from(err: io::Error) -> ClientError {
         ClientError::Io(err)
-    }
-}
-
-impl From<net::AddrParseError> for ClientError {
-    fn from(err: net::AddrParseError) -> ClientError {
-        ClientError::AddrParse(err)
     }
 }
 
