@@ -50,7 +50,7 @@ fn get_request(stream: &mut net::TcpStream,
     try!(stream.write_all(format!("Host: {}\r\n", url.host).as_bytes()));
     try!(stream.write_all(b"Connection: Close\r\n"));
     try!(stream.write_all(b"\r\n"));
-    Ok::<Success, ClientError>(Success)
+    Ok(Success)
 }
 
 fn client(mut argv: env::Args) -> Result<String, ClientError> {
